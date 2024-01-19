@@ -4,11 +4,11 @@ import plotly.express as px
 def visualize_fft(df):
     fig = px.line(
         df, 
-        x=df['time'],
-        y=df['Hz'],
+        x=df['amplitude'],
+        y=df['frequency'],
         labels = {
-            'time' : 'Time (seconds)',
-            'Hz' : 'Frequency (Hz)'
+            'time' : 'Amplitude',
+            'frequency' : 'Frequency (Hz)'
         }
     )
-    fig.show
+    fig.show()
