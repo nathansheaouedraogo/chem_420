@@ -6,5 +6,5 @@ import pandas as pd
 
 # load into dataframe
 def fft_df():
-    df = pd.read_csv(fp('fft_file'), delimiter='\t')
-    return df
+    df = pd.read_csv(fp('fft_file'), delimiter='')
+    return df 
