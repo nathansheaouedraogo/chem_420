@@ -5,10 +5,10 @@ def visualize_fft(df):
     fig = px.line(
         df, 
         x=df['amplitude'],
-        y=df['frequency'],
+        y=df['hz'],
         labels = {
             'time' : 'Amplitude',
-            'frequency' : 'Frequency (Hz)'
+            'hz' : 'Frequency (Hz)'
         }
     )
     fig.show()
