@@ -2,7 +2,7 @@
 import plotly.express as px  
 
 def visualize_fft(df):
-    fig = px.lin(
+    fig = px.line(
         df, 
         x=df['time'],
         y=df['Hz'],
