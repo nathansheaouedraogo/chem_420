@@ -1,0 +1,8 @@
+For my analysis, I wished to differentiate major fingerprints of lipids, proteins, nucleic acids, and carbohydrates. Lipid's major fingerprint region occur around ~2700cm^-1, proteins have two major peaks centered around 1600cm^-1, carbohydrates have a major fingerprint around 1100cm^-1 and nucleic acids have fingerprints centered around 1200cm^-1. 
+
+I firstly split my spectra into those four general regions and based my analysis around trying to indentify those peaks. Since the data was noisy, I preprocessed the data by applying a Savitzky-Golay filter to each band. This cleaned up the data and allowed for easier downstream processing. Next, I ran a PCA
+on the bands in order to help select the correct clusters. For the amides I used a scatter-plot to visually select the bands, and for the lipids I used a hyperspectra (grouped by PC1) to choose the data points. I found the second method to be much better, as it was much more visually intuitive and had less room for error. Finally, I ran the selected bands to a k-means algorithm which clustered the closest bands together. My outputs were run in parallel to a hyperspectra and a band averaging followed by a band integration. I chose to integrate the peaks which were closest in nature to the fingerprints of the source.
+
+
+
+Unfortunatley, I could not properly resolve the nucleic acid peaks and therefore could not analyze them. 
