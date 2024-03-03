@@ -1,19 +1,24 @@
+% document class
 \documentclass[titlepage]{article}
 
-% packages 
+% document layout packages 
 \usepackage{geometry} % allows easier page formatting
+\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+
+% formatting
 \usepackage{indentfirst} % suppresses inbuilt "no-indent" after section
 \usepackage{amsmath} % amsmath package
 \usepackage[english]{isodate} % date package
-\usepackage{fixltx2e} % allows easy subscript in pdf mode
-\usepackage{DejaVuSans} % Verdana-like font package
-\renewcommand*\familydefault{\sfdefault}
+
+% font (inter light)
+\usepackage[sfdefault,light]{inter} %% Option 'sfdefault' only if 'inter' is to be used
+\usepackage[T1]{fontenc}
 \usepackage{enumerate}
-\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+
 \begin{document} % begin document!
 
 % title page
-\title{Module 2 Assignment}
+\title{\textbf{Module 2 Assignment}}
 \author{Nathan Shea Ouedraogo}
 \date{\printdateTeX{2024/03/04}}
 \maketitle
@@ -73,5 +78,28 @@
     must be trained to output nonspurious relations within the data. This also results in a higher overall 
     use of resources and much greater complexity. 
 \end{enumerate}
+
+\newpage
+
+% Question 2
+\section{}
+\setlength{\parindent}{20pt}
+\par \emph{k}-Means is a type of unsupervised machine learning used in data analysis. 
+It takes a set of data points and divides them into a number of clusters 
+determined by the user. Each cluster is averaged and the outputted data is 
+reduced in size and organized by correlation. Centroids are the arithmetic center 
+of a given group of data points. Data points are assigned to clusters based on 
+how close they are to any \emph{k} $>$ 1 clusters. The underlying assumption is that closely spaced 
+data points are correlated and represent the same variable. \emph{k}Means works well for unlabeled data 
+with a known number of categories. For example this method would work well for combined spectroscopic 
+and visual data where absorption bands for some feature is known but the raw spectral data is unlabeled. 
+Using \emph{k}means one could set the number of clusters to the number of expected features and average the data 
+into clusters corresponding to these features. 
+
+% Question 3
+\section{}
+\setlength{\parindent}{20pt}
+    
+
 
 \end{document}
