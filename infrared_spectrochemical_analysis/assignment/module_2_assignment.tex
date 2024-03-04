@@ -9,6 +9,7 @@
 \usepackage{indentfirst} % suppresses inbuilt "no-indent" after section
 \usepackage{amsmath} % amsmath package
 \usepackage[english]{isodate} % date package
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=red]{hyperref} % hyperlink package
 
 % font (inter light)
 \usepackage[sfdefault,light]{inter} %% Option 'sfdefault' only if 'inter' is to be used
@@ -22,7 +23,7 @@
 \author{Nathan Shea Ouedraogo}
 \date{\printdateTeX{2024/03/04}}
 \maketitle
-
+\large
 % Question 1
 \section{}
 \setlength{\parindent}{20pt}
@@ -55,8 +56,7 @@
     physical surface of a material. In AFM-IR, the sample material is irradiated with infrared 
     radiation from a tunable laser causing absorption in the sample. The resultant expansion 
     caused by the photothermal absorption into the sample is transduced by the cantilever tip. 
-    This allows for high resolution topographical mapping of IR information. IR s-SNOM (scattering-
-    type Scanning Near-field Optical Microscopy) uses an AFM cantilever to provide topographical 
+    This allows for high resolution topographical mapping of IR information. IR s-SNOM (scattering-type Scanning Near-field Optical Microscopy) uses an AFM cantilever to provide topographical 
     mapping of a surface. Unlike AFM-IR which transduces the displacement of the cantilever 
     due to photothermal expansion, IR s-SNOM detects the \emph{scattering} of IR due to 
     the cantilever tip. In AFM-IR, the sample is irradiated whereas in IR s-SNOM the cantilever is 
@@ -79,8 +79,6 @@
     use of resources and much greater complexity. 
 \end{enumerate}
 
-\newpage
-
 % Question 2
 \section{}
 \setlength{\parindent}{20pt}
@@ -90,16 +88,32 @@ determined by the user. Each cluster is averaged and the outputted data is
 reduced in size and organized by correlation. Centroids are the arithmetic center 
 of a given group of data points. Data points are assigned to clusters based on 
 how close they are to any \emph{k} $>$ 1 clusters. The underlying assumption is that closely spaced 
-data points are correlated and represent the same variable. \emph{k}Means works well for unlabeled data 
+data points are correlated and represent the same variable. \emph{k}-Means works well for unlabeled data 
 with a known number of categories. For example this method would work well for combined spectroscopic 
 and visual data where absorption bands for some feature is known but the raw spectral data is unlabeled. 
-Using \emph{k}means one could set the number of clusters to the number of expected features and average the data 
+Using \emph{k}-means one could set the number of clusters to the number of expected features and average the data 
 into clusters corresponding to these features. 
 
 % Question 3
 \section{}
 \setlength{\parindent}{20pt}
-    
+\par Principle component analysis (PCA) is a method of reducing the amount of axis of a given data set with the goal of finding new axis (`components') around which the dataset has high variance. It does this by trying to maximize the variance along a new linear fitting curve and divide the data along these new relations. PCA only works for normally distributed data which explains part of the reason why it can help reduce noise. PCA fits the data along n-axis and ranks them according to how strongly these variables contribute to variation in the data. Given a base of good raw signal to noise ratio (SNR) in the data, it can generally be assumed that the first principal component correspond to data, as they should be the greatest contributors to the observed variance and noise increases with higher order axes. Therefore assuming good SNR, noise should not be a major contributor of the observed variance in the signal along its most contributing PC axis. Noise can thus be greatly reduced as axis which do not strongly contribute to the data are eliminated which has the overall effect of eliminating their contribution of noise. 
 
+% Question 4
+\section{}
+\setlength{\parindent}{20pt}
+\par The internal workings of an FT-IR spectrometer contain a interferometer which detects the interference patter caused by two beams of light. In the most basic version of a Michelson interferometer (which will be used in the following for simplicity), a coherent light source is directed at a beam splitter which directs the light to two mirrors. The first mirror is static at a fixed distance from the beam splitter and the second mirror moves back and forth, towards and away the beam splitter. The split beams recombine at the output and the resultant interference pattern is interpreted by the instrument. As the second mirror is moved not only in space but also in time, the interference patterns will change in relation to the position of the movable mirror as a function of time. By applying a Fast-Fourier Transform (FFT) to the interferogram, the signal can be translated from the time domain to the frequency domain. Two values relating the distance of the mirrors to the beam splitter are important. The optical path difference (OPD) is the difference in length from the beam splitter to the static mirror and the beam splitter and the moving mirror, which is obviously related to the position of the moving mirror. The zero path difference is the difference between the two paths when the moving mirror is at its `zero' position (ideally should be zero). 
+\par Knowing the exact OPD values are critical for deriving accurate FFTs since the FFT is the inverse of the OPD value. The change in OPD ($\Delta$OPD) must be precisely known as a change in wavelength maxima will cause artifacts in the interferometer. Controlling the velocity of the mirror drive to the extremely high levels of accuracy needed is incredibly costly and using a single wavelength would make the spectrographer useless. Instead, a reference beam with a very high level of coherence across the optical path (ie the wavelength must be temporally and spectrally coherent) is shone parallel to the sample beam and collected in a seperate detector. This reference inteferometer is used to correct for the inaccuracy in ZPD and mirror velocity allowing accurate and high resolution $\Delta$OPD readings. He-Ne beams are incredibly popular in many optical applications due to their reliability, stability, and ease of use.
+\par Diode lasers may be used instead of a He-Ne laser, and offer several potential advantages; they are cheaper to produce, last much longer as they do not degrade like gas lasers, have tunable emission ranges, are resistant to ambient interference, and are much less bulky. However, they offer shorter coherence lengths, have a more broadband emission spectra, and are very prone to temperature fluctuations.
+
+\par Exchanging the reference beam from 633nm to 532nm would theoretically produce a better Nyquist frequency. The Nyquist frequency is defined as the smallest frequency which can be measured accuratley and is calculated as 2x the sampling frequency. In theory the 532nm diode laser would offer a better resolution as compared to a 633nm gass beam. \\ \\ \\
+
+\begin{small}
+    Sources:
+    \begin{enumerate}
+        \item  \url{https://www.newport.com/n/introduction-to-ftir-spectroscopy}
+        \item \url{https://www.shimadzu.eu/sites/shimadzu.seg/files/ftir_talkletter_vol_24.pdf}
+    \end{enumerate}
+\end{small}
 
 \end{document}
