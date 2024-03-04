@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1709584755 "c:/Users/Nathan/OneDrive - University of Saskatchewan/School Stuffz/Chem/Chem 420/chem_420/infrared_spectrochemical_analysis/assignment/module_2_assignment.tex" "module_2_assignment.pdf" "module_2_assignment" 1709584756 0
-  "c:/Users/Nathan/OneDrive - University of Saskatchewan/School Stuffz/Chem/Chem 420/chem_420/infrared_spectrochemical_analysis/assignment/module_2_assignment.tex" 1709584754 13585 685cd7d2313289b562753acde54bbda5 ""
+["pdflatex"] 1709585179 "c:/Users/Nathan/OneDrive - University of Saskatchewan/School Stuffz/Chem/Chem 420/chem_420/infrared_spectrochemical_analysis/assignment/module_2_assignment.tex" "module_2_assignment.pdf" "module_2_assignment" 1709585180 0
+  "c:/Users/Nathan/OneDrive - University of Saskatchewan/School Stuffz/Chem/Chem 420/chem_420/infrared_spectrochemical_analysis/assignment/module_2_assignment.tex" 1709585177 13586 56c6ff75990e389a6c15e82e01e7ac1a ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1694294223 2971 def0b6c1f0b107b3b936def894055589 ""
   "c:/texlive/2023/texmf-dist/fonts/enc/dvips/inter/a_zasxrl.enc" 1694296571 3164 dde9a402814ee7665a8a145ce4fa9d9d ""
   "c:/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1694296130 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -105,9 +105,9 @@
   "c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1694303488 4703462 5df3913b339a4fb9b4dc6c57dc378863 ""
   "c:/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1694303619 8183822 bfef9aaa974915375be9ce100e43ed14 ""
   "c:/texlive/2023/texmf.cnf" 1694303188 713 e69b156964470283e0530f5060668171 ""
-  "module_2_assignment.aux" 1709584756 1039 08d2e707276490f49e2c3916230cdfd2 "pdflatex"
-  "module_2_assignment.out" 1709584756 175 0c445c11d55d2836d41884682ae0087c "pdflatex"
-  "module_2_assignment.tex" 1709584754 13585 685cd7d2313289b562753acde54bbda5 ""
+  "module_2_assignment.aux" 1709585180 1039 08d2e707276490f49e2c3916230cdfd2 "pdflatex"
+  "module_2_assignment.out" 1709585180 175 0c445c11d55d2836d41884682ae0087c "pdflatex"
+  "module_2_assignment.tex" 1709585177 13586 56c6ff75990e389a6c15e82e01e7ac1a ""
   (generated)
   "module_2_assignment.aux"
   "module_2_assignment.log"
