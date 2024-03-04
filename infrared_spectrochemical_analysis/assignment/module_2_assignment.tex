@@ -10,6 +10,9 @@
 \usepackage{amsmath} % amsmath package
 \usepackage[english]{isodate} % date package
 \usepackage[colorlinks=true, urlcolor=blue, linkcolor=red]{hyperref} % hyperlink package
+\usepackage{setspace}% Using \doublespacing in the preamble 
+\doublespacing % changes the text to double-line spacing
+
 
 % font (inter light)
 \usepackage[sfdefault,light]{inter} %% Option 'sfdefault' only if 'inter' is to be used
@@ -23,11 +26,12 @@
 \author{Nathan Shea Ouedraogo}
 \date{\printdateTeX{2024/03/04}}
 \maketitle
-\large
+
+
 % Question 1
 \section{}
 \setlength{\parindent}{20pt}
-\begin{enumerate}[a)]
+\begin{enumerate}[a)] % chktex 17
     \item 
     FTIR Microscopy ($\mu$-FTIR) combines microscopic methods with FTIR analysis. 
     This method relies on the transmission of visible and infrared radiation through 
@@ -63,7 +67,7 @@
     irradiated and the scattering caused by the tip is related to the absorption 
     coefficient of the material. AFM-IR is best suited for soft material 
     as they have large thermal expansion coefficients whereas s-sNOM is 
-    better suited for harder materials as they scatter light the most efferently.
+    better suited for hard materials which scatter light well.
     
     \item
     There are two main methods of implementing machine learning; supervised and unsupervised 
@@ -103,10 +107,10 @@ into clusters corresponding to these features.
 \section{}
 \setlength{\parindent}{20pt}
 \par The internal workings of an FT-IR spectrometer contain a interferometer which detects the interference patter caused by two beams of light. In the most basic version of a Michelson interferometer (which will be used in the following for simplicity), a coherent light source is directed at a beam splitter which directs the light to two mirrors. The first mirror is static at a fixed distance from the beam splitter and the second mirror moves back and forth, towards and away the beam splitter. The split beams recombine at the output and the resultant interference pattern is interpreted by the instrument. As the second mirror is moved not only in space but also in time, the interference patterns will change in relation to the position of the movable mirror as a function of time. By applying a Fast-Fourier Transform (FFT) to the interferogram, the signal can be translated from the time domain to the frequency domain. Two values relating the distance of the mirrors to the beam splitter are important. The optical path difference (OPD) is the difference in length from the beam splitter to the static mirror and the beam splitter and the moving mirror, which is obviously related to the position of the moving mirror. The zero path difference is the difference between the two paths when the moving mirror is at its `zero' position (ideally should be zero). 
-\par Knowing the exact OPD values are critical for deriving accurate FFTs since the FFT is the inverse of the OPD value. The change in OPD ($\Delta$OPD) must be precisely known as a change in wavelength maxima will cause artifacts in the interferometer. Controlling the velocity of the mirror drive to the extremely high levels of accuracy needed is incredibly costly and using a single wavelength would make the spectrographer useless. Instead, a reference beam with a very high level of coherence across the optical path (ie the wavelength must be temporally and spectrally coherent) is shone parallel to the sample beam and collected in a seperate detector. This reference inteferometer is used to correct for the inaccuracy in ZPD and mirror velocity allowing accurate and high resolution $\Delta$OPD readings. He-Ne beams are incredibly popular in many optical applications due to their reliability, stability, and ease of use.
+\par Knowing the exact OPD values are critical for deriving accurate FFTs since the FFT is the inverse of the OPD value. The change in OPD ($\Delta$OPD) must be precisely known as a change in wavelength maxima will cause artifacts in the interferometer. Controlling the velocity of the mirror drive to the extremely high levels of accuracy needed is incredibly costly and using a single wavelength would make the spectrographer useless. Instead, a reference beam with a very high level of coherence across the optical path (ie the wavelength must be temporally and spectrally coherent) is shone parallel to the sample beam and collected in a separate detector. This reference inteferometer is used to correct for the inaccuracy in ZPD and mirror velocity allowing accurate and high resolution $\Delta$OPD readings. He-Ne beams are incredibly popular in many optical applications due to their reliability, stability, and ease of use.
 \par Diode lasers may be used instead of a He-Ne laser, and offer several potential advantages; they are cheaper to produce, last much longer as they do not degrade like gas lasers, have tunable emission ranges, are resistant to ambient interference, and are much less bulky. However, they offer shorter coherence lengths, have a more broadband emission spectra, and are very prone to temperature fluctuations.
 
-\par Exchanging the reference beam from 633nm to 532nm would theoretically produce a better Nyquist frequency. The Nyquist frequency is defined as the smallest frequency which can be measured accuratley and is calculated as 2x the sampling frequency. In theory the 532nm diode laser would offer a better resolution as compared to a 633nm gass beam. \\ \\ \\
+\par Exchanging the reference beam from 633nm to 532nm would theoretically produce a better Nyquist frequency. The Nyquist frequency is defined as the smallest frequency which can be measured accuratley and is calculated as 2x the sampling frequency. In theory the 532nm diode laser would offer a better resolution as compared to a 633nm gass beam. \\ \\ \\ % chktex 13
 
 \begin{small}
     Sources:
@@ -115,5 +119,13 @@ into clusters corresponding to these features.
         \item \url{https://www.shimadzu.eu/sites/shimadzu.seg/files/ftir_talkletter_vol_24.pdf}
     \end{enumerate}
 \end{small}
-
+% [chktex]-file 17
+% Question 4
+\newpage
+\section{}
+\setlength{\parindent}{20pt} 
+\par $\mu$-FTIR, PTIR, and O-PTIR were used to analyze two different cross-sectional sample thicknesses of $\approx$6 $\mu$m for $\mu$-FTIR, and $\approx$400 $n$m for PTIR and O-PTIR, with analyzed areas of $\approx$2$\times$10\textsuperscript{11}nm\textsuperscript{3} for $\mu$-FTIR, $\approx$10\textsuperscript{8}nm\textsuperscript{3} for O-PTIR, and $\approx$5$\times$10\textsuperscript{3}nm\textsuperscript{3} for PTIR. These differences in areas allowed the authors to resolve different metal carboxylate species present in the layers of the paint in low concentrations.The spatial resolution of O-PTIR ($\approx$500nm) allowed the authors to distinguish species with low concentrations and phase separated in the paint surface whereas the spatial resolution of PTIR ($\approx$10nm) allowed the authors to map the distribution of chemical species at the nanoscale. 
+\par Each method required different methods of data acquisition. $\mu$-FTIR samples were placed between KBr pellets and analyzed using  a synchrotron beamline at a frequency range of 7500 to 750cm.\textsuperscript{-1} and the absorption bands were integrated and mapped. The OPT-IR instrument equipped with a quantum cascade laser (920-1800cm\textsuperscript{-1}  and 2660-3020cm\textsuperscript{-1}) and a visible light laser (532nm). Finally, PTIR was preformed with a sweep of 1300 to 1900cm\textsuperscript{-1} and an IR laser focused on the sample. A Savitzky-Golay filter was used to smooth the data and the data was normalized. 
+\par Different analytical techniques may have been employed to analyze the surface deposition. NMR may have been used to help identify different carboxylate species. Mass-spectroscopy imaging could be useful to determine the chemical composition of the surface layer and map it into a 3-D field. The most useful method (and likely the most destructive) would be to use a GC-MS on the samples. This would allow characterization of the chemical composition of the sample with a very high degree of specie resolution.
+\par There are many research problems which could benefit from a multiscale approach like the one used in this paper. The paper used a multiscale approach to probe different scales on the surface of the paint film. This allowed the resolvement and characterization of different metal complexes at varying concentrations. Extending this method to thin films on solid surfaces (such as urban grime, bacterial mats, dust, etc\dots) could allow researchers to probe the composition and spatial arrangement of these materials. 
 \end{document}
