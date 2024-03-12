@@ -1,14 +1,18 @@
+%% PREAMBLE %%
+
 % document class
 \documentclass[titlepage]{article}
 
 % document layout packages 
 \usepackage{geometry} % allows easier page formatting
 \geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+\usepackage{tabularx} % table package
 
 % math packages
 \usepackage{amsmath} % amsmath package
 \usepackage{amssymb} % lots of stuff ex: bbm !
 \usepackage{nicefrac} % commands to make ugly fractions nicer. not always needed!
+\usepackage{bm} % bold math package !
 
 % formatting
 \usepackage{indentfirst} % suppresses inbuilt "no-indent" after section
@@ -27,6 +31,7 @@
 \usepackage[english]{isodate} % date package
 \usepackage[colorlinks=true, urlcolor=blue, linkcolor=red]{hyperref} % hyperlink package
 
+%% DOCUMENT %%
 
 \begin{document} % begin document!
 
@@ -361,10 +366,10 @@ The position vector is:
 \section{}
 \begin{center}
     \large
-    \textbf{Hagen-Poiseuille Flow in a Rectangular Pipe }
+    \textbf{Hagen-Poiseuille Flow between Parallel Plates}
 \end{center}
 \normalsize
-\noindent Given a cross section of a pipe, $\partial\hspace*{2pt}\mathcal{C}$, the flow is said to be under Hagen-Poiseuille conditions if: 
+\noindent Given a cross section perpendicular to the flow of the fluid, $\partial\hspace*{2pt}\mathcal{C}$, the flow is said to be under Hagen-Poiseuille conditions if: 
 \small
 \begin{center}
     \emph{\begin{enumerate}
@@ -417,7 +422,7 @@ The position vector is:
 \begingroup
     \addtolength\jot{5pt}
     \begin{align}
-        0&=-\vec{\nabla}p+\eta\nabla^2\vec{v}\\   
+        0&=-\vec{\nabla}p+\eta\nabla^2\vec{v_{z}}\\   
         \displaystyle\frac{\partial{p}}{\partial{x}}+\displaystyle\frac{\partial{p}}{\partial{y}}+\frac{\partial{p}}{\partial{z}}&=\eta\left(\displaystyle\frac{\partial^2{v_{z}}}{\partial{x}^2}+\displaystyle\frac{\partial^2{v_{z}}}{\partial{y}^2}+\displaystyle\frac{\partial^2{v_{z}}}{\partial{z}^2}\right) \\ 
         \displaystyle\frac{\partial{p}}{\partial{z}}&=\eta\left(\frac{\partial^2{v_{z}}}{\partial{x}^2}+\displaystyle\frac{\partial^2{v_{z}}}{\partial{y}^2}+\frac{\partial^2{v}}{\partial{z}^2}\right) \\
     \displaystyle\frac{\partial{p}}{\partial{z}}&=\eta\left(\displaystyle\frac{\partial^2{v_{z}}}{\partial{y}^2}\right)\hspace*{5pt}\blacksquare 
@@ -467,7 +472,7 @@ If the velocity is non-zero on the boundary of $\mathcal{C}$ , then the velocity
 \newpage
 \begin{center}
     \large
-    \textbf{Hagen-Poiseuille Flow in a Circular Pipe} \\
+    \textbf{Hagen-Poiseuille Flow in a Circular Channel} \\
 \end{center}
 
 \normalsize
@@ -544,9 +549,55 @@ If the velocity is non-zero on the boundary of $\mathcal{C}$ , then the velocity
 \noindent We can prove no-slip conditions in a circular pipe in  cartesian coordinates as well. To convert back we set $\displaystyle\frac{\partial{p}}{\partial{z}}=\displaystyle\frac{\Delta{p}}{L_{0}}$, and $r^2=a^2$. Since $\mathcal{C}$ is a circle, any point on $\partial\hspace*{2pt}\mathcal{C}$ can be used to derive the radius: 
 $r=a=\sqrt{x_{boundary}^2+y_{boundary}^2}$. If we make these substitutions into equation (77) it is trivial to prove compliance with no-slip boundary conditions:
 \begin{align}
-    v_{z}\left(x,y\right) &= -\left(\displaystyle\frac{\Delta{p}}{4\eta{L_{0}}}\right)\left(a^2-\left(\sqrt{x_{boundary}^2+y_{boundary}^2}\right)^2\right) \\
-    v_{z}\left(x,y\right) &= -\left(\displaystyle\frac{\Delta{p}}{4\eta{L_{0}}}\right)\left(a^2-a^2\right) \\
-    \therefore v_{z}\left(x,y\right) &= 0 \hspace*{5pt}\blacksquare
+    \vec{v_{z}}\left(x,y\right) &= -\left(\displaystyle\frac{\Delta{p}}{4\eta{L_{0}}}\right)\left(a^2-\left(\sqrt{x_{boundary}^2+y_{boundary}^2}\right)^2\right) \\
+    \vec{v_{z}}\left(x,y\right) &= -\left(\displaystyle\frac{\Delta{p}}{4\eta{L_{0}}}\right)\left(a^2-a^2\right) \\
+    \therefore \vec{v_{z}}\left(x,y\right) &= 0 \hspace*{5pt}\blacksquare
+\end{align}
+
+\newpage
+\begin{center}
+    \large
+    \textbf{Hagen-Poiseuille Flow in a Rectangular Channel} \\
+\end{center}
+\noindent Unlike a channel between parallel plates with theoretically `zero' height and circular channels which are symmetrical in length and width, rectangular channels introduce asymmetry between the x and y axis. Therefore the velocity gradient will now have x and y components. As we have done previously, we will assume pressure is only applied in the z-direction and the z-axis is translationally invariant. Starting from equation (46), our velocity function becomes: 
+
+\begin{align}
+    \nabla^2\vec{v_{z}}\left(x,y\right) = \displaystyle\frac{\partial^2{v_{z}}}{\partial{x^2}}+\displaystyle\frac{\partial^2{v_{z}}}{\partial{y^2}}
+\end{align}
+
+\noindent Unfortunately there is no known analytical solution to this differential equation and the best we can do is a Fourier approximation. Per the Fourier transform, any periodic function function $f\left(u\right), \hspace*{2pt} u \in \left[-D, +D\right]$ can be represented as a series of cosines and sines:
+
+\begin{align}
+    f\left(u\right) &= \sum_{n=odd}^{\infty}b_{n}\left(u\right)\sin(\displaystyle\frac{n\pi{u}}{D}) + \sum_{n=even}^{\infty}a_{n}\left(u\right)\cos(\displaystyle\frac{n\pi{u}}{D})
+\end{align}
+
+
+\noindent Let the y-axis be the height of the channel with bounds $0\leq{y}\leq{h}$, let the x-axis be the width of the channel with bounds $-w_{\displaystyle\nicefrac{1}{2}}\leq{x}\leq{+w_{\displaystyle\nicefrac{1}{2}}}$ and finally let the z-axis be the direction of the flow. The sign of the width terms denotes which side of the midpoint $\left(x=0\right)$ they are on. As we did in the last two sections, this will give boundary conditions $x \in \left[-w_{\displaystyle\nicefrac{1}{2}}, +w_{\displaystyle\nicefrac{1}{2}}\right]$, $y\in\left[0,h\right]$. As with the previous examples, velocity is constant across the y-axis (the height of the channel) but variable along the x-axis (the width of the channel). Using equation (85), the general form of the solution for equation (84) will be:
+
+\begin{align}
+    \vec{v_{z}}\left(x,y\right) &= \sum_{n=odd}^{\infty}b_{n}\left(x\right)\sin(\displaystyle\frac{n\pi{x}}{h}) + \sum_{n=even}^{\infty}a_{n}\left(x\right)\cos(\displaystyle\frac{n\pi{x}}{h}) 
+\end{align}
+
+\noindent The even expansion satisfies $f\left(-t\right)=f\left(t\right)$ whereas the odd expansion satisfies $f\left(-t\right)=-f\left(t\right)$. Only the odd terms will be used as they satisfy the boundary conditions: 
+\begin{align}
+    \vec{v_{z}}\left(x,y\right) &= \sum_{n=odd}^{\infty}b_{n}\left(x\right)\sin(\displaystyle\frac{n\pi{x}}{h})
+\end{align}
+
+\newpage
+
+Subbing equation (87) into equation (84) gives: 
+
+\begin{align}
+    \nabla^2\vec{v_{z}}\left(x,y\right) &= \sum_{n=odd}^{\infty}\left(\displaystyle\frac{\partial^2{v_{z}}}{\partial{x}^2}\left[b_{n}\left(x\right)\sin(\displaystyle\frac{n\pi{x}}{h})\right] + \left[\displaystyle\frac{\partial^2{v_{z}}}{\partial{y}^2} b_{n}\left(x\right)\sin(\displaystyle\frac{n\pi{x}}{h})\right]\right) \\ 
+    \nabla^2\vec{v_{z}}\left(x,y\right) &= \sum_{n=odd}^{\infty}\displaystyle\frac{\partial^2{v_{z}}}{\partial{x}^2}\left[b_{n}\left(x\right)\sin(\displaystyle\frac{n\pi{x}}{h})\right] + 0 \\
+    \nabla^2\vec{v_{z}}\left(x,y\right) &= \sum_{n=odd}^{\infty}\displaystyle\frac{\partial{v_{z}}}{\partial{x}}\left[b_{n}^{'}\left(x\right)\sin(\displaystyle\frac{n\pi{x}}{h})+b_{n}^{'}\left(x\right)\displaystyle\frac{n\pi{x}}{h}\cos(\displaystyle\frac{n\pi{x}}{h})\right] \\
+    \nabla^2\vec{v_{z}}\left(x,y\right) &= \sum_{n=odd}^{\infty}\left[b_{n}^{''}\left(x\right)\sin(\displaystyle\frac{n\pi{x}}{h}) - b_{n}\left(x\right)\displaystyle\frac{n^{2}\pi^{2}x^{2}}{h^2}\sin(\displaystyle\frac{n\pi}{h})\right] + \sum_{n=even}^{\infty} 2\left[b^{'}\left(x\right)\displaystyle\frac{n\pi{x}}{h}\cos(\displaystyle\frac{n\pi{x}}{h})\right]
+\end{align}
+
+Since we are only concerned with the odd terms, the equation reduces to:
+
+\begin{align}
+    \nabla^2\vec{v_{z}}\left(x,y\right) &= \sum_{n=odd}^{\infty}\left[b_{n}^{''}\left(x\right) - b_{n}\left(x\right)\displaystyle\frac{n^{2}\pi^{2}x^{2}}{h^2}\right]\sin(\displaystyle\frac{n\pi{x}}{h}) \hspace*{5pt} \square
 \end{align}
 
 \newpage
@@ -556,24 +607,117 @@ $r=a=\sqrt{x_{boundary}^2+y_{boundary}^2}$. If we make these substitutions into 
     \textbf{Experimental Verification of Hagen-Poiseuille's Law} \\
 \end{center} 
 \begin{center}
-    \textbf{\emph{i) Derivation of Hagen-Poiseuille's Law}}
+    \textbf{\emph{i) Derivation of Hagen-Poiseuille's Law in a Circular Pipe}}
 \end{center}
 \noindent Flow rate (Q) is obtained by integrating the velocity by the area of our cross-section $\mathcal{C}$. We must define some terms before performing the integration.
 First, let us define the bounds of integration on $\mathcal{C}$. Given a circular cross-section, the bounds will be from the the minimum radius in the center of $\mathcal{C}$, $r_{min}=0$, to the maximum radius on $\partial\hspace*{2pt}\mathcal{C}$, $r_{max}=R$. Next we will define $\displaystyle\frac{\partial{p}}{\partial{z}}$ as $\displaystyle\frac{\partial{p}}{\partial{z}}=\displaystyle\frac{\Delta{p}}{L_{0}}$. Finally, we must define our area of integration and the Jacobian (scaling factor). The area of integration, $dA$, will be $2\pi$ and the Jacobian for cylindrical coordinates is simply $J\left(r,\theta,z\right)=r$. Now we are ready to derive Q:
 \begingroup
     \addtolength\jot{6pt}
     \begin{align}
-        Q&=\int_{r_{min}}^{r_{max}}v_{z}J\left(r,\theta,z\right)dA\\
-        &=\int_{r=0}^{r=R}-\left(\displaystyle\frac{1}{4\eta}\right)
+        Q&= -\int_{r_{min}}^{r_{max}}v_{z}J\left(r,\theta,z\right)dA\\
+        &= -\int_{r=0}^{r=R}-\left(\displaystyle\frac{1}{4\eta}\right)
         \left(\displaystyle\frac{\Delta{p}}{L_{0}}\right)\left(R^2-r^2\right){r}2\pi{dr} \\
-        &=-\left(\displaystyle\frac{\pi}{2\eta}\right)
+        &= \left(\displaystyle\frac{\pi}{2\eta}\right)
         \left(\displaystyle\frac{\Delta{p}}{L_{0}}\right)\int_{r=0}^{r=R}\left(R^2r-r^3\right)dr \\
-        &=-\left(\displaystyle\frac{\pi}{2\eta}\right)
+        &=\left(\displaystyle\frac{\pi}{2\eta}\right)
         \left(\displaystyle\frac{\Delta{p}}{L_{0}}\right)\left(\displaystyle\frac{R^2r^2}{2}-\displaystyle\frac{r^4}{4}\right)\Bigr|_{r=0}^{r=R} \\
-        &=-\left(\displaystyle\frac{\pi}{2\eta}\right)
+        &=\left(\displaystyle\frac{\pi}{2\eta}\right)
         \left(\displaystyle\frac{\Delta{p}}{L_{0}}\right)\left(\displaystyle\frac{R^4}{4}\right) \\
-        &=-\left(\displaystyle\frac{R^4\pi}{8\eta}\right)
+        &=\left(\displaystyle\frac{R^4\pi}{8\eta}\right)
         \left(\displaystyle\frac{\Delta{p}}{L_{0}}\right)\hspace*{5pt}\hspace*{5pt}\square
+    \end{align} \\
+    
+    \begin{center}
+        \textbf{\emph{ii) Hydraulic Resistance in a Circular Pipe}}
+    \end{center}
+    $\Delta p$ of a system is proportional to the flow rate and how easily the fluid can pass through the medium of $\partial\hspace*{2pt}\mathcal{C}$. The ability of a fluid to pass through a medium is called `hydraulic resistance', $R_{hyd}=\displaystyle\frac{8\eta{L_{0}}}{R^4\pi}$. Starting from equation (89): 
+    \begin{align}
+        \displaystyle\frac{{Q}{L_{0}}}{\Delta p} &= \displaystyle\frac{R^4\pi}{8\eta} \\
+        \Delta p &= \displaystyle\frac{8\eta{L_{0}}}{R^4\pi}{Q} \\
+        \Delta p &= {R_{hyd}}{Q}\hspace*{5pt}\\
+        R_{hyd} &= \displaystyle\frac{\Delta p}{Q}\hspace*{5pt}\blacksquare 
     \end{align}
 \endgroup
+
+\newpage
+\begin{center}
+    \textbf{\emph{v) Experimental Data}}
+\end{center}
+
+\begin{tabularx}{0.8\textwidth}{
+    | >{\centering\arraybackslash}X
+    | >{\centering\arraybackslash}X |}
+    \hline
+    \textbf{$\bm{\Delta p}$ (mbar)} & \textbf{$\bm{H_{2}O}$ mass (g)} \\
+    \hline
+    50 & 0.0348 \\
+    \hline
+    250 & 0.2327 \\
+    \hline
+    500 & 0.484 \\
+    \hline
+    750 & 0.775 \\
+    \hline
+    950 & 0.9061 \\
+    \hline
+\end{tabularx} 
+\vspace*{0.5cm}
+\newline \noindent The data above was collected by applying pressure across a microfluidic device and collecting the mass of water at the outlet for 300s. Given STAP conditions and flow rate `Q' with units of $\displaystyle\frac{m^3}{s}$, we may derive the hydraulic resistance $R_{hyd}$ which has units of $Pa\displaystyle\frac{s}{m^3}$. Starting with equation (93):  
+\begingroup
+    \addtolength\jot{6pt}
+    \begin{align}
+        R_{hyd} &= \left(\displaystyle\frac{\Delta p\times\displaystyle\frac{100Pa}{1mbar}}{\left(mass_{H_{2}O}\times{\displaystyle\frac{m^3}{1000g}}\right)(s)}\right) \\
+        R_{hyd} &= \left(\Delta p\times\displaystyle\frac{100Pa}{1mbar}\right) \times \left(\displaystyle\frac{1000g\times{s}}{mass_{H_{2}O}\times{m^3}}\right) \hspace*{5pt}\square
+    \end{align}
+    Using values from the first row in equation (95) gives: 
+    \begin{align*}
+        R_{hyd} &= \left(50mbar\times\displaystyle\frac{100Pa}{1mbar}\right) \times \left   (\displaystyle\frac{1000g\times{300s}}{0.0348g\times{m^3}}\right) \\
+        \bm{R_{hyd}} & \bm{\thickapprox 4.3\times{10^{10}}Pa\displaystyle\frac{s}{m^3}}
+    \end{align*}
+\endgroup
+
+\noindent Performing calculations for all experimental results gives the following: 
+\vspace*{0.5cm}
+
+\begin{tabularx}{0.8\textwidth}{
+    | >{\centering\arraybackslash}X
+    | >{\centering\arraybackslash}X |}
+    \hline
+    $\bm{\Delta p}$ $\left(mbar\right)$ & $\bm{R_{hyd}}$ $\left(Pa\right)\left(s\right){m^{-3}}$ \\
+    \hline
+    50 & 4.31$\times{10^{10}}$ \\
+    \hline
+    250 & 3.22$\times{10^{10}}$ \\
+    \hline
+    500 & 3.10$\times{10^{10}}$ \\
+    \hline
+    750 & 2.90 $\times{10^{10}}$ \\
+    \hline
+    950 & 3.15 $\times{10^{10}}$ \\
+    \hline
+\end{tabularx} 
+
+\newpage
+\noindent Hydraulic resistance is analogous to electrical resistance. As such, total hydraulic resistance in series is the sum of each `resistor'and in parallel the resistance is the sum of the reciprocal of each resistor. If we were to add a tube of a specific resistance to the above device, the total resistance would increase by the tube's hydraulic resistance $R_{tubes}$. Given $R_{tubes}=1\times{10^8}\left(Pa\right)\left(s\right){m^{-3}}$, the previously calculated resistances would become: 
+\vspace*{0.5cm}
+
+\begin{tabularx}{0.8\textwidth}{
+    | >{\centering\arraybackslash}X
+    | >{\centering\arraybackslash}X |}
+    \hline
+    $\bm{\Delta p}$ $\left(mbar\right)$ & $\bm{R_{hyd}}$ $\left(Pa\right)\left(s\right){m^{-3}}$ \\
+    \hline
+    50 & 4.32$\times{10^{10}}$ \\
+    \hline
+    250 & 3.23$\times{10^{10}}$ \\
+    \hline
+    500 & 3.11$\times{10^{10}}$ \\
+    \hline
+    750 & 2.91 $\times{10^{10}}$ \\
+    \hline
+    950 & 3.16 $\times{10^{10}}$ \\
+    \hline
+\end{tabularx} 
+
+
 \end{document}
